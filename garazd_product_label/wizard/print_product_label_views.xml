@@ -32,6 +32,7 @@
                     <field name="template" string="Label template" widget="radio"/>
                     <!-- <field name="multi_label"/> -->
                 </group>
+<<<<<<< HEAD
                 <div>
                     <field name="qty_per_product" class="oe_left mr8"
                         help="Label quantity per product"
@@ -42,12 +43,22 @@
                         help="Restore initial quantity"
                         icon="fa-undo" type="object" class="btn-xs mr8 mb4"/>
                 </div>
+=======
+                <button name="action_set_qty_to_one" string="Set qty to 1"
+                    type="object" class="btn-xs mr8 mb4"/>
+                <button name="action_restore_initial_qty" string="Restore initial qty"
+                    type="object" class="btn-xs mr8 mb4"/>
+>>>>>>> d4285b23632669a0e7dba2c338768e539caecd55
                 <field name="label_ids" mode="tree">
                     <tree editable="top" decoration-success="qty &gt; 0">
                         <field name="selected" readonly="True"/>
                         <field name="product_id"/>
                         <button name="action_minus_qty" type="object" string="" icon="fa-minus"/>
+<<<<<<< HEAD
                         <field name="qty" readonly="True" sum="Total"/>
+=======
+                        <field name="qty" readonly="True"/>
+>>>>>>> d4285b23632669a0e7dba2c338768e539caecd55
                         <button name="action_plus_qty" type="object" string="" icon="fa-plus"/>
                     </tree>
                 </field>
