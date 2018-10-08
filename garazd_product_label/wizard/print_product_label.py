@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import api, fields, models, _
-<<<<<<< HEAD
 from odoo.exceptions import Warning
-=======
->>>>>>> d4285b23632669a0e7dba2c338768e539caecd55
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -33,29 +30,18 @@ class PrintProductLabel(models.TransientModel):
 
     label_ids = fields.One2many('product.label', 'wizard_id',
         string='Labels for Products', default=_get_products)
-<<<<<<< HEAD
     template = fields.Selection([
             ('garazd_product_label.report_product_label_57x35_template', 'Label 57x35mm (A4: 21 pcs on sheet, 3x7)')
         ], default='garazd_product_label.report_product_label_57x35_template', string="Label template")
     qty_per_product = fields.Integer('Label quantity per product', default=1)
-=======
-    multi_label = fields.Boolean('Print Several Labels')
-    template = fields.Selection([
-            ('garazd_product_label.report_product_label_57x35_template', 'Label 57x35mm (A4: 21 pcs on sheet, 3x7)')
-        ], default='garazd_product_label.report_product_label_57x35_template', string="Label template")
->>>>>>> d4285b23632669a0e7dba2c338768e539caecd55
 
     @api.multi
     def action_print(self):
         self.ensure_one()
-<<<<<<< HEAD
         labels = self.label_ids.filtered('selected').mapped('id')
         if not labels:
             raise Warning(_('Nothing to print, set the quantity of labels in the table.'))
         return self.env['report'].get_action(labels, self.template)
-=======
-        return self.env['report'].get_action(self.label_ids.filtered('selected').mapped('id'), self.template)
->>>>>>> d4285b23632669a0e7dba2c338768e539caecd55
 
     @api.multi
     def reopen_form(self):
@@ -71,15 +57,9 @@ class PrintProductLabel(models.TransientModel):
         }
 
     @api.multi
-<<<<<<< HEAD
     def action_set_qty(self):
         self.ensure_one()
         self.label_ids.update({'qty': self.qty_per_product})
-=======
-    def action_set_qty_to_one(self):
-        self.ensure_one()
-        self.label_ids.update({'qty': 1})
->>>>>>> d4285b23632669a0e7dba2c338768e539caecd55
         return self.reopen_form()
 
     @api.multi
