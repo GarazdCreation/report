@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="invoice_supplier_form_inherit_l10n_ua_letter_authority" model="ir.ui.view">
+        <field name="name">invoice.supplier.form.inherit.l10n.ua.letter.authority</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_supplier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook//page[1]" position="after">
+                <page name="letter_authority" string="Letter of authority" attrs="{'invisible': [('type', 'not in', ['in_invoice'])]}">
+                    <group>
+                        <field name="la_number"/>
+                        <field name="la_employee_id" options="{'no_create': True}"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="la_issue_date"/>
+                        </group>
+                        <group>
+                            <field name="la_valid_until"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="la_director_id" options="{'no_create': True}"/>
+                        <field name="la_accountant_id" options="{'no_create': True}"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
