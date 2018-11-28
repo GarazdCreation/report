@@ -10,7 +10,7 @@
     'license': 'LGPL-3',
     'summary': """Print custom product labels""",
     'images': ['static/description/banner.png'],
-    'description': 'Module allows to print custom product labels on different paper formats. Label size: 57x35mm, paperformat: A4 (21 pcs per sheet, 3 pcs x 7 rows).',
+    'description': """Module allows to print custom product labels on different paper formats. Label size: 57x35mm, paperformat: A4 (21 pcs per sheet, 3 pcs x 7 rows).""",
     'depends': ['product'],
     'data': [
         'wizard/print_product_label_views.xml',
