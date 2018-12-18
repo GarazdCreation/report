@@ -12,7 +12,7 @@
     'description': """
         This module allows converting numbers into Ukrainian text (Сума прописом/Сумма прописью).
     """,
-    # 'images': ['static/description/banner.png'],
+    'images': ['static/description/banner.png'],
     'depends' : [],
     'data': [],
     'application': False,
