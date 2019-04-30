@@ -24,11 +24,9 @@ class ProductLabel(models.TransientModel):
     def action_plus_qty(self):
         for record in self:
             record.update({'qty': record.qty+1})
-            return record.wizard_id.reopen_form()
 
     @api.multi
     def action_minus_qty(self):
         for record in self:
             if record.qty > 0:
                 record.update({'qty': record.qty-1})
-            return record.wizard_id.reopen_form()
