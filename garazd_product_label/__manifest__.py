@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2019 Yurii Razumovskyi <support@garazd.biz>
+
+# Copyright (C) 2019 Garazd Creation (<https://garazd.biz/>)
+# Author: Yurii Razumovskyi (<support@garazd.biz>)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
+
 {
     'name': 'Custom Product Labels',
-    'version': '12.0.1.0.1',
+    'version': '12.0.1.0.2',
     'category': 'Product Management',
     'author': 'Garazd Creation',
     'website': "https://garazd.biz",

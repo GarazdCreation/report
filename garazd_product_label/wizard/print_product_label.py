@@ -3,11 +3,12 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import Warning
 
-# TODO:  tests - try_report_action
-
 
 class PrintProductLabel(models.TransientModel):
     _name = "print.product.label"
+    _description = 'Product Labels Wizard'
+
+    # TODO:  tests - try_report_action
 
     @api.model
     def _get_products(self):
@@ -28,7 +29,19 @@ class PrintProductLabel(models.TransientModel):
                 res.append(label.id)
         return res
 
-    name = fields.Char('Name', default='Print Product Labels')
+    name = fields.Char(
+        'Name',
+        default='Print Product Labels',
+    )
+    message = fields.Char(
+        'Message',
+        readonly=True,
+    )
+    output = fields.Selection(
+        selection=[('pdf', 'PDF')],
+        string='Print to',
+        default='pdf',
+    )
     label_ids = fields.One2many(
         comodel_name='product.label',
         inverse_name='wizard_id',
@@ -47,8 +60,7 @@ class PrintProductLabel(models.TransientModel):
 
     @api.multi
     def action_print(self):
-        """ Print labels
-        """
+        """ Print labels """
         self.ensure_one()
         labels = self.label_ids.filtered('selected').mapped('id')
         if not labels:
@@ -66,9 +78,3 @@ class PrintProductLabel(models.TransientModel):
         for label in self.label_ids:
             if label.qty_initial:
                 label.update({'qty': label.qty_initial})
-
-    # Don't work in Odoo 12.0
-    # @api.multi
-    # def action_back(self):
-    #     self.ensure_one()
-    #     return {'type': 'ir.actions.client', 'tag': 'history_back'}
