@@ -119,7 +119,7 @@ msgstr "Печать"
 
 #. module: garazd_product_label
 #: model_terms:ir.ui.view,arch_db:garazd_product_label.print_product_label_view_form
-msgid "Print Product Labels"
+msgid "Print product labels"
 msgstr "Печать ценников"
 
 #. module: garazd_product_label

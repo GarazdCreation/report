@@ -16,14 +16,14 @@ class PrintProductLabel(models.TransientModel):
         if self._context.get('active_model') == 'product.template':
             products = self.env[self._context.get('active_model')].browse(self._context.get('default_product_ids'))
             for product in products:
-                label = self.env['product.label'].create({
+                label = self.env['print.product.label.line'].create({
                     'product_id': product.product_variant_id.id,
                 })
                 res.append(label.id)
         elif self._context.get('active_model') == 'product.product':
             products = self.env[self._context.get('active_model')].browse(self._context.get('default_product_ids'))
             for product in products:
-                label = self.env['product.label'].create({
+                label = self.env['print.product.label.line'].create({
                     'product_id': product.id,
                 })
                 res.append(label.id)
@@ -31,7 +31,7 @@ class PrintProductLabel(models.TransientModel):
 
     name = fields.Char(
         'Name',
-        default='Print Product Labels',
+        default='Print product labels',
     )
     message = fields.Char(
         'Message',
@@ -43,7 +43,7 @@ class PrintProductLabel(models.TransientModel):
         default='pdf',
     )
     label_ids = fields.One2many(
-        comodel_name='product.label',
+        comodel_name='print.product.label.line',
         inverse_name='wizard_id',
         string='Labels for Products',
         default=_get_products,

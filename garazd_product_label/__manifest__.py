@@ -6,15 +6,15 @@
 
 {
     'name': 'Custom Product Labels',
-    'version': '12.0.1.0.2',
+    'version': '12.0.1.0.3',
     'category': 'Product Management',
     'author': 'Garazd Creation',
     'website': "https://garazd.biz",
     'license': 'LGPL-3',
-    'summary': """Print custom product labels""",
+    'summary': """Print custom product labels with barcode""",
     'images': ['static/description/banner.png'],
     'description': """
-Module allows to print custom product labels on different paper formats.
+Module allows to print custom product barcode labels and tags on different paper formats.
 Label size: 57x35mm, paperformat: A4 (21 pcs per sheet, 3 pcs x 7 rows).
     """,
     'depends': ['product'],

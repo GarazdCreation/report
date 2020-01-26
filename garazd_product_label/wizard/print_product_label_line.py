@@ -3,9 +3,9 @@
 from odoo import api, fields, models, _
 
 
-class ProductLabel(models.TransientModel):
-    _name = "product.label"
-    _description = 'Product Label'
+class PrintProductLabelLine(models.TransientModel):
+    _name = "print.product.label.line"
+    _description = 'Line with Product Label Data'
 
     selected = fields.Boolean(
         string='Print',
