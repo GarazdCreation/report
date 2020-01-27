@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2019 Garazd Creation (<https://garazd.biz/>)
+# Copyright (C) 2019-2020 Garazd Creation (<https://garazd.biz/>)
 # Author: Yurii Razumovskyi (<support@garazd.biz>)
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
@@ -15,7 +15,7 @@
     'images': ['static/description/banner.png'],
     'description': """
 Module allows to print custom product barcode labels and tags on different paper formats.
-Label size: 57x35mm, paperformat: A4 (21 pcs per sheet, 3 pcs x 7 rows).
+This module include the one label template with size: 57x35mm, paperformat: A4 (21 pcs per sheet, 3 pcs x 7 rows).
     """,
     'depends': ['product'],
     'data': [
