@@ -57,12 +57,16 @@ class PrintProductLabel(models.TransientModel):
         string='Label quantity per product',
         default=1,
     )
+    humanreadable = fields.Boolean(
+        string='Print digital code of barcode',
+        default=False,
+    )
 
     @api.multi
     def action_print(self):
         """ Print labels """
         self.ensure_one()
-        labels = self.label_ids.filtered('selected').mapped('id')
+        labels = self.label_ids.filtered(lambda x: x.selected == True and x.qty > 0).mapped('id')
         if not labels:
             raise Warning(_('Nothing to print, set the quantity of labels in the table.'))
         return self.env.ref(self.template).with_context(discard_logo_check=True).report_action(labels)

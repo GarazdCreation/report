@@ -16,7 +16,13 @@
                     <div t-if="label.product_id.default_code" style="width: 100%; padding: 0; margin: 0; font-size: 12px;">
                         <span t-field="label.product_id.default_code"/>
                     </div>
-                    <img t-if="label.product_id.barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', label.product_id.barcode, 600, 100)" style="width:100%;height:13%;padding:3px 3px;"/>
+                    <div t-if="label.product_id.barcode" class="text-center align-middle" style="margin: 0; padding: 0 3px; height: 20px;">
+                        <t t-if="label.wizard_id.humanreadable" t-set="show_code" t-value="1"/>
+                        <t t-else="" t-set="show_code" t-value="0" />
+                        <img alt="Barcode"
+                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s' % ('Code128', label.product_id.barcode, 600, 100, show_code)"
+                             style="overflow: hidden; width: 100%; height: 100%;"/>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -35,7 +41,7 @@
                         </t>
                         <t t-foreach="list(range(qty))" t-as="index_qty">
                             <div t-if="count % 21 == 0" style="page-break-after:always;"/>
-                            <!-- <div t-if="count % 3 == 0" style="clear:both;"/> -->
+                            <div t-if="count % 3 == 0" style="clear:both;"/>
                             <div style="width: 30%; float: left; height: 180px; margin: 0 10px;">
                                 <t t-call="garazd_product_label.label_57x35"/>
                             </div>

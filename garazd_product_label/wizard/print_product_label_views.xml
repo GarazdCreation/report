@@ -47,27 +47,38 @@
                         <field name="template" string="Label template" widget="radio"/>
                     </group>
                 </group>
-                <div>
-                    <field name="qty_per_product" class="oe_left mr8"
-                        help="Label quantity per product"
-                        style="width: 40px !important; text-align: right;"/>
-                    <button name="action_set_qty" string="Set quantity"
-                        help="Set a certain quantity for each line."
-                        type="object" class="btn-xs mr8 mb4"/>
-                    <button name="action_restore_initial_qty" string=""
-                        help="Restore initial quantity."
-                        icon="fa-undo" type="object" class="btn-xs mr8 mb4"/>
-                </div>
-                <field name="label_ids" mode="tree">
-                    <tree editable="top" decoration-success="qty &gt; 0">
-                        <field name="selected"/>
-                        <field name="product_id"/>
-                        <field name="barcode" readonly="True"/>
-                        <button name="action_minus_qty" type="object" string="" icon="fa-minus"/>
-                        <field name="qty" sum="Total" />
-                        <button name="action_plus_qty" type="object" string="" icon="fa-plus"/>
-                    </tree>
-                </field>
+                <notebook>
+                    <page string="Labels">
+                        <div>
+                            <field name="qty_per_product" class="oe_left mr8"
+                                help="Label quantity per product"
+                                style="width: 40px !important; text-align: right;"/>
+                            <button name="action_set_qty" string="Set quantity"
+                                help="Set a certain quantity for each line."
+                                type="object" class="btn-xs mr8 mb4"/>
+                            <button name="action_restore_initial_qty" string=""
+                                help="Restore initial quantity."
+                                icon="fa-undo" type="object" class="btn-xs mr8 mb4"/>
+                        </div>
+                        <field name="label_ids" mode="tree">
+                            <tree editable="top" decoration-success="qty &gt; 0">
+                                <field name="selected"/>
+                                <field name="product_id"/>
+                                <field name="barcode" readonly="True"/>
+                                <button name="action_minus_qty" type="object" string="" icon="fa-minus"/>
+                                <field name="qty" sum="Total" />
+                                <button name="action_plus_qty" type="object" string="" icon="fa-plus"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Options">
+                        <group name="options">
+                            <group>
+                                <field name="humanreadable" widget="boolean_toggle" />
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
             </form>
         </field>
     </record>

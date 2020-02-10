@@ -9,8 +9,15 @@ class PrintProductLabelLine(models.TransientModel):
 
     selected = fields.Boolean(
         string='Print',
-        compute='_compute_selected',
-        readonly=True,
+        # compute='_compute_selected',
+        readonly=False,
+        default=True,
+    )
+    currency_id = fields.Many2one(
+        comodel_name='res.currency',
+        string='Currency',
+        required=True,
+        default=lambda self: self.env.user.company_id.currency_id,
     )
     wizard_id = fields.Many2one('print.product.label', 'Print Wizard')
     product_id = fields.Many2one('product.product', 'Product', required=True)
@@ -18,21 +25,17 @@ class PrintProductLabelLine(models.TransientModel):
     qty_initial = fields.Integer('Initial Qty', default=1)
     qty = fields.Integer('Label Qty', default=1)
 
-    @api.depends('qty')
-    def _compute_selected(self):
-        for record in self:
-            if record.qty > 0:
-                record.update({'selected': True})
-            else:
-                record.update({'selected': False})
-
     @api.multi
     def action_plus_qty(self):
         for record in self:
             record.update({'qty': record.qty + 1})
+            if record.qty > 0:
+                record.selected = True
 
     @api.multi
     def action_minus_qty(self):
         for record in self:
             if record.qty > 0:
                 record.update({'qty': record.qty - 1})
+            if record.qty <= 0:
+                record.selected = False

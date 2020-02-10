@@ -3,6 +3,13 @@
 Changelog
 =========
 
+`12.0.1.0.4`
+-------
+- **IMP:** Add the field "Currency" to the Print Label Wizard.
+- **IMP:** Add the tab "Options" to the Print Label Wizard.
+- **IMP:** Add the option "Print digital code of barcode".
+
+
 `12.0.1.0.3`
 -------
 - **FIX:** Rename model "product.label" to "print.product.label.line".
